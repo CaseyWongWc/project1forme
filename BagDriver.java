@@ -1,7 +1,8 @@
+/**
+    @author Matthew Yeung, Casey Wong
+ */
 package project1forme;
-
 import java.util.Arrays;
-
 public class BagDriver 
 {
     
@@ -12,25 +13,27 @@ public class BagDriver
      * on the arrays and returns their outputs. Unlike the original difference program,
      * this one prints out both string array entries after the they have been modified.
      */
+
+
     public static void main(String[] args) 
     {
-
-        //BagInterface<String> bag1 = new ResizableArrayBag<>();
+        /**
+         * @param bag1 tests using a resizable array bag
+         * @param bag2 tests using a linked bag
+         */
+        BagInterface<String> bag1 = new ResizableArrayBag<>();
         BagInterface<String> bag2 = new LinkedBag<>();
 
-        /*bag1.add("a");
-        bag1.add("b");
-        bag1.add("c");*/
 
-        bag2.add("b");
+        bag2.add("b"); 
         bag2.add("b");
         bag2.add("d");
         bag2.add("e");
         String[] array1 = { "a", "b", "c"};
-        //String[] array2 = { "b", "b", "d", "e" };   
+  
 
-        BagInterface<String> bag1 = toBag(array1);
-        //BagInterface<String> bag2 = toBag(array2);
+        bag1 = toList(array1);
+
         
 
         BagInterface<String> everything = bag1.union(bag2);
@@ -46,14 +49,17 @@ public class BagDriver
 
     }
     
-    private static  BagInterface<String> toBag(String[] content)
+    private static  BagInterface<String> toList(String[] content)
     {
-        BagInterface<String> aBag = new LinkedBag<>();
+        /**
+         * @return aList turns items to a linked list if needed
+         */
+        BagInterface<String> aList = new LinkedBag<>();
         for (int i=0; i < content.length;i++)
         {   
-            aBag.add(content[i]);
+            aList.add(content[i]);
         }
-        return aBag;
+        return aList;
     }
 
     private static void print(BagInterface<String> abag)

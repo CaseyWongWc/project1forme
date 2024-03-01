@@ -1,18 +1,25 @@
+/**
+    @author Matthew Yeung, Casey Wong
+    the program is run using linked bags.
+ */
 package project1forme;
 
 //import java.util.ArrayList;
 
 public final class ResizableArrayBag<T> implements BagInterface<T>
 {
-    private T[] bagArray;
-    private int numberOfEntries;
-    private static final int DEFAULT_CAPACITY = 25;
+    
+    private T[] bagArray; //makes life easier
+    private int numberOfEntries; //counts for stuff in bag
+    private static final int DEFAULT_CAPACITY = 25; //initial capacity
 
+    /**makes new bag with the defualt size */
     public ResizableArrayBag()
     {
         this(DEFAULT_CAPACITY);
     }
 
+    /**creates an array named tempBag  with a length of desiredCapacity,  temobagwillthen be copied to barArray*/
     public ResizableArrayBag(int desiredCapacity) 
     {
         @SuppressWarnings("unchecked")
@@ -37,20 +44,27 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
         return numberOfEntries;
     }
 
+    
+    /** 
+     * @return true if number of entries is zero
+     */
     @Override
     public boolean isEmpty() 
     {
         return numberOfEntries==0;
     }
-
+    /**@return true if new entries is added to the resizable bag array */
     @Override
     public boolean add(T newEntry) 
     {
-        bagArray[numberOfEntries] = newEntry;
+        bagArray[numberOfEntries] = newEntry; //the size of the abg will scale according to the number of entries, newentry will be added to end of the array with new size
         numberOfEntries++;
         return true;
     }
 
+    /**
+     * does the reverse by setting the last element of bag array to nothing and decrementing the number of entries 
+     * @return this is saved in result and reutrns the object removed */
     @Override
     public T remove() 
     {
@@ -60,6 +74,10 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
         return result;
     }
 
+    /** removes specific entry from an arrayBag.
+     * @return true if entry has been found and removed
+     * @return false if entry has not been found and removed
+     */
     @Override
     public boolean remove(T anEntry) 
     {
@@ -119,7 +137,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
     
     /** 
      * @return T[]
-     * Converts our string to an array
+     * Converts our Bag to an array
      */
     @Override
     public T[] toArray() 
